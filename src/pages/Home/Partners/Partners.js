@@ -7,7 +7,7 @@ import bajaj from '../../../assets/bajaj.png';
 
 const Partners = () => {
     return (
-        <section className=' my-10'>
+        <section className=' my-20'>
             <h2 className='text-center text-3xl font-semibold'>Second Hand Products From Companies We Allow</h2>
             <div className=' grid gap-4 grid-cols-3 md:grid-cols-5 w-11/12 ml-auto mt-8'>
                 <img className='w-24 text-center' src={yamaha} alt="" />
