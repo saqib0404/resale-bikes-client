@@ -31,8 +31,51 @@ const Blogs = () => {
                 <div className="blog border-2 border-blue-100 rounded-lg p-4 mb-4">
                     <h3 className='text-center text-2xl'>What is a unit test? Why should we write unit tests?</h3>
                     <p className='p-2'><span className='font-semibold underline'>Answer:</span>
-                    The main objective of unit testing is to isolate written code to test and determine if it works as intended. Unit testing is an important step in the development process, because if done correctly, it can help detect early flaws in code which may be more difficult to find in later testing stages. That is why we should use it.
+                        The main objective of unit testing is to isolate written code to test and determine if it works as intended. Unit testing is an important step in the development process, because if done correctly, it can help detect early flaws in code which may be more difficult to find in later testing stages. That is why we should use it.
                     </p>
+                </div>
+
+                {/* Blog-4 */}
+                <div className="blog border-2 border-blue-100 rounded-lg p-4 mb-4">
+                    <h3 className='text-center text-2xl'>Write about React vs. Angular vs. Vue</h3>
+                    <div className="overflow-x-auto my-2">
+                        <table className="table w-full">
+                            <thead>
+                                <tr>
+                                    <th></th>
+                                    <th>React</th>
+                                    <th>Angular</th>
+                                    <th>Vue</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <th>Complexity Level</th>
+                                    <td>Medium</td>
+                                    <td>High</td>
+                                    <td>Easy</td>
+                                </tr>
+                                <tr>
+                                    <th>File Size</th>
+                                    <td>100 KB</td>
+                                    <td>500 KB</td>
+                                    <td>80 KB</td>
+                                </tr>
+                                <tr>
+                                    <th>Launched</th>
+                                    <td>2013</td>
+                                    <td>2010</td>
+                                    <td>2014</td>
+                                </tr>
+                                <tr>
+                                    <th>Load Time</th>
+                                    <td>Medium</td>
+                                    <td>High</td>
+                                    <td>Low</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
 
             </div>
