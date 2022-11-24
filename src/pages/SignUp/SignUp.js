@@ -125,7 +125,7 @@ const SignUp = () => {
 
                 </form>
 
-                <p className="text-center text-sm my-2">Already have an account? <Link to='/login' className='text-secondary font-semibold'>Please Login</Link></p>
+                <p className="text-center text-sm my-2">Already have an account? <Link to='/login' className='text-primary font-semibold'>Please Login</Link></p>
                 <div className="divider">OR</div>
                 <input onClick={handleGoogleLogin} className='btn btn-accent btn-outline mt-4 w-full' type="submit" value={'Continue with Google'} />
             </div>
