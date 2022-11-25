@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../contexts/AuthProvider';
@@ -14,9 +14,11 @@ const Login = () => {
     const location = useLocation();
     const from = location.state?.from?.pathname || '/';
 
-    if (token) {
-        navigate(from, { replace: true });
-    }
+    useEffect(() => {
+        if (token) {
+            navigate(from, { replace: true });
+        }
+    }, [from, token, navigate])
 
     const handleLogin = data => {
         const { email, password } = data;
@@ -66,7 +68,7 @@ const Login = () => {
                     <input className='btn btn-accent mt-4 w-full' type="submit" value={'Login'} />
                 </form>
                 <p className="text-center text-sm my-2">New to Resell Bikes? <Link to='/signup' className='text-primary font-semibold'>Create new account</Link></p>
-                
+
             </div>
         </div >
     );
