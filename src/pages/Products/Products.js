@@ -1,9 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useLoaderData } from 'react-router-dom';
+import BookingModal from './BookingModal';
 
 const Products = () => {
     const products = useLoaderData();
-    console.log(products);
+    const [bookingProduct, setBookingProduct] = useState(null);
     return (
         <div className='my-20'>
             <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mx-6 md:mx-10'>
@@ -17,10 +18,17 @@ const Products = () => {
                         <p className='text-sm py-0 my-0'>Seller: {product?.seller}</p>
                         <p className='text-sm py-0 my-0'>Used Years: {product?.used}</p>
                         <div className="card-actions mt-5">
-                            <button className="btn btn-primary">Book Now</button>
+                            <label htmlFor="booking-modal" onClick={() => setBookingProduct(product)} className="btn btn-primary">Book Now</label>
                         </div>
                     </div>
                 </div>)}
+                {
+                    bookingProduct &&
+                    <BookingModal
+                        bookingProduct={bookingProduct}
+                        setBookingProduct={setBookingProduct}
+                    ></BookingModal>
+                }
             </div>
         </div>
     );
