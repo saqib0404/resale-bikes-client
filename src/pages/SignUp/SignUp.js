@@ -47,7 +47,7 @@ const SignUp = () => {
     const handleGoogleLogin = () => {
         googleLogin()
             .then(res => {
-                console.log(res.user);
+                // console.log(res.user);
                 const userType = 'Buyer';
                 saveUser(res.user.displayName, res.user.email, userType)
             })

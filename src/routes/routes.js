@@ -3,6 +3,7 @@ import DashBoardLayout from "../layout/DashboardLayout";
 import Main from "../layout/Main";
 import Blogs from "../pages/Blogs/Blogs";
 import MyBookings from "../pages/Dashboard/MyBookings/MyBookings";
+import Payments from "../pages/Dashboard/Payments/Payments";
 import Home from "../pages/Home/Home/Home";
 import Login from "../pages/Login/Login";
 import NotFoundPage from "../pages/NotFoundPage/NotFoundPage";
@@ -45,7 +46,12 @@ export const router = createBrowserRouter([
             {
                 path: '/dashboard',
                 element: <MyBookings></MyBookings>
-            }
+            },
+            {
+                path: '/dashboard/payment/:id',
+                loader: ({ params }) => fetch(`http://localhost:5000/bookings/${params.id}`),
+                element: <Payments></Payments>
+            },
         ]
     },
     {
