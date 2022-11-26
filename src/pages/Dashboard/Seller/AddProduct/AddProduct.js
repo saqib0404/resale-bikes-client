@@ -1,12 +1,11 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext } from 'react';
 import { useForm } from 'react-hook-form';
 import toast from 'react-hot-toast';
-import { Link, useNavigate } from 'react-router-dom';
+import {  useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../../../contexts/AuthProvider';
 
 const AddProduct = () => {
     const { user } = useContext(AuthContext);
-    const [err, setErr] = useState('');
     const { register, formState: { errors }, handleSubmit } = useForm();
     const navigate = useNavigate();
     const date = new Date();
@@ -102,7 +101,7 @@ const AddProduct = () => {
                             )}
                             className="input input-bordered w-full my-1" />
                         {errors.resalePrice && <p className='text-red-600 text-sm'>{errors.resalePrice?.message}</p>}
-                        {err && <p className='text-sm text-red-600'>{err}</p>}
+                        
 
                         {/* Original Price */}
                         <input type="number" placeholder='Original Price in dollar'
@@ -113,7 +112,7 @@ const AddProduct = () => {
                             )}
                             className="input input-bordered w-full my-1" />
                         {errors.originalPrice && <p className='text-red-600 text-sm'>{errors.originalPrice?.message}</p>}
-                        {err && <p className='text-sm text-red-600'>{err}</p>}
+                        
 
                         {/* Condition */}
                         <input type="text" placeholder='Condition: e.g.Excelent, Good, Fair'
@@ -124,7 +123,7 @@ const AddProduct = () => {
                             )}
                             className="input input-bordered w-full my-1" />
                         {errors.condition && <p className='text-red-600 text-sm'>{errors.condition?.message}</p>}
-                        {err && <p className='text-sm text-red-600'>{err}</p>}
+                        
 
                         {/* Phone */}
                         <input type="number" placeholder='Phone Number'
@@ -135,7 +134,7 @@ const AddProduct = () => {
                             )}
                             className="input input-bordered w-full my-1" />
                         {errors.phone && <p className='text-red-600 text-sm'>{errors.phone?.message}</p>}
-                        {err && <p className='text-sm text-red-600'>{err}</p>}
+                        
 
                         {/* location */}
                         <input type="text" placeholder='Location: e.g.Dhaka, Khulna'
@@ -146,7 +145,7 @@ const AddProduct = () => {
                             )}
                             className="input input-bordered w-full my-1" />
                         {errors.location && <p className='text-red-600 text-sm'>{errors.location?.message}</p>}
-                        {err && <p className='text-sm text-red-600'>{err}</p>}
+                        
 
                         {/* Category */}
                         <label className="label">
@@ -170,7 +169,7 @@ const AddProduct = () => {
                             )}
                             className="input input-bordered w-full my-1" />
                         {errors.purchasedYear && <p className='text-red-600 text-sm'>{errors.purchasedYear?.message}</p>}
-                        {err && <p className='text-sm text-red-600'>{err}</p>}
+                        
 
                         {/* Description */}
                         <textarea type="text" placeholder='Description maxlengeth: 100'
@@ -181,7 +180,7 @@ const AddProduct = () => {
                             )}
                             className="textarea textarea-bordered w-full my-1" maxLength={100} />
                         {errors.description && <p className='text-red-600 text-sm'>{errors.description?.message}</p>}
-                        {err && <p className='text-sm text-red-600'>{err}</p>}
+                        
 
                     </div>
                     <input className='btn btn-accent mt-4 w-full' type="submit" value={'Submit'} />
