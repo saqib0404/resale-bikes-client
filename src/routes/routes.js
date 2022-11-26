@@ -4,12 +4,15 @@ import Main from "../layout/Main";
 import Blogs from "../pages/Blogs/Blogs";
 import MyBookings from "../pages/Dashboard/MyBookings/MyBookings";
 import Payments from "../pages/Dashboard/Payments/Payments";
+import AddProduct from "../pages/Dashboard/Seller/AddProduct/AddProduct";
+import MyProducts from "../pages/Dashboard/Seller/MyProducts/MyProducts";
 import Home from "../pages/Home/Home/Home";
 import Login from "../pages/Login/Login";
 import NotFoundPage from "../pages/NotFoundPage/NotFoundPage";
 import Products from "../pages/Products/Products";
 import SignUp from "../pages/SignUp/SignUp";
 import PrivateRoute from "./PrivateRoute";
+import SellerRoute from "./SellerRoute";
 
 export const router = createBrowserRouter([
     {
@@ -46,6 +49,14 @@ export const router = createBrowserRouter([
             {
                 path: '/dashboard',
                 element: <MyBookings></MyBookings>
+            },
+            {
+                path: '/dashboard/addproduct',
+                element: <SellerRoute><AddProduct></AddProduct></SellerRoute>
+            },
+            {
+                path: '/dashboard/myproducts',
+                element: <SellerRoute><MyProducts></MyProducts></SellerRoute>
             },
             {
                 path: '/dashboard/payment/:id',
