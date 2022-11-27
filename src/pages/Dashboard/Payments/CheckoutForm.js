@@ -2,6 +2,7 @@ import { CardElement, useElements, useStripe } from '@stripe/react-stripe-js';
 import React, { useEffect, useState } from 'react';
 import toast from 'react-hot-toast';
 import { useNavigate } from 'react-router-dom';
+import Loader from '../../../components/Loader/Loader';
 
 const CheckoutForm = ({ booking }) => {
     const [clientSecret, setClientSecret] = useState("");

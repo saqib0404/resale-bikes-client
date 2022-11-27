@@ -6,7 +6,7 @@ import { AuthContext } from '../../../../contexts/AuthProvider';
 
 const MyProducts = () => {
     const { user } = useContext(AuthContext);
-    const { data: products = [] } = useQuery({
+    const { data: products = [],refetch } = useQuery({
         queryKey: ['products'],
         queryFn: async () => {
             const res = await fetch(`http://localhost:5000/products?email=${user?.email}`, {
@@ -32,6 +32,7 @@ const MyProducts = () => {
                 .then(data => {
                     if (data.deletedCount > 0) {
                         toast.success('Product Deleted')
+                        refetch();
                     }
                 })
         }
@@ -49,7 +50,8 @@ const MyProducts = () => {
                 .then(res => res.json())
                 .then(data => {
                     if (data.acknowledged) {
-                        toast.success('Product Advertised')
+                        toast.success('Product Advertised');
+                        refetch();
                     }
                 })
         }

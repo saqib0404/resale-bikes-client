@@ -28,9 +28,9 @@ const Adevertised = () => {
                                 <p className='text-sm py-0 my-0'>Original Price: ${product?.original_price}</p>
                                 <p className='text-sm py-0 my-0'>Resale Price: ${product?.resale_price}</p>
                                 <p className='text-sm py-0 my-0'>Seller: {product?.seller}</p>
-                                <p className='text-sm py-0 my-0'>Used Years: {product?.used}</p>
-                                <div className="card-actions mt-5">
-                                    <label htmlFor="booking-modal" onClick={() => setBookingProduct(product)} className="btn btn-primary">Book Now</label>
+                                <p className='text-sm py-0 my-0'>Posted: {product?.time}</p>
+                                <div className="block w-full mt-5">
+                                    <label htmlFor="booking-modal" onClick={() => setBookingProduct(product)} className="btn btn-info w-full">Book Now</label>
                                 </div>
                             </div>
                         </div>)}

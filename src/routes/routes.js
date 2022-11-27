@@ -2,6 +2,9 @@ import { createBrowserRouter } from "react-router-dom";
 import DashBoardLayout from "../layout/DashboardLayout";
 import Main from "../layout/Main";
 import Blogs from "../pages/Blogs/Blogs";
+import AllBuyers from "../pages/Dashboard/Admin/AllBuyers/AllBuyers";
+import AllSellers from "../pages/Dashboard/Admin/AllSellers/AllSellers";
+import ResportToAdmin from "../pages/Dashboard/Admin/ResportToAdmin/ResportToAdmin";
 import MyBookings from "../pages/Dashboard/MyBookings/MyBookings";
 import Payments from "../pages/Dashboard/Payments/Payments";
 import AddProduct from "../pages/Dashboard/Seller/AddProduct/AddProduct";
@@ -57,6 +60,18 @@ export const router = createBrowserRouter([
             {
                 path: '/dashboard/myproducts',
                 element: <SellerRoute><MyProducts></MyProducts></SellerRoute>
+            },
+            {
+                path: '/dashboard/allsellers',
+                element: <AllSellers></AllSellers>
+            },
+            {
+                path: '/dashboard/allbuyers',
+                element: <AllBuyers></AllBuyers>
+            },
+            {
+                path: '/dashboard/reporteditems',
+                element: <ResportToAdmin></ResportToAdmin>
             },
             {
                 path: '/dashboard/payment/:id',

@@ -1,14 +1,26 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import toast from 'react-hot-toast';
 import { AuthContext } from '../../contexts/AuthProvider';
 
 const BookingModal = ({ bookingProduct, setBookingProduct }) => {
     const { user } = useContext(AuthContext);
     const { bike_name, resale_price, image, _id } = bookingProduct;
-
+    const [userType, setUserType] = useState();
+    useEffect(() => {
+        fetch(`http://localhost:5000/users?email=${user?.email}`, {
+            headers: {
+                authorization: `bearer ${localStorage.getItem('accessToken')}`
+            },
+        })
+            .then(res => res.json())
+            .then(data => setUserType(data))
+    }, [user])
+    
     const handleBooking = e => {
         e.preventDefault();
-
+        if (userType?.userType === "Seller" || userType?.userType === "Admin") {
+            return toast.error("Only Buyers can book products")
+        }
         const form = e.target;
         const name = form.name.value;
         const email = form.email.value;
