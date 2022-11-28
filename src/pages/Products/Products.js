@@ -1,12 +1,47 @@
-import React, { useEffect, useState } from 'react';
+import React, {  useContext, useState } from 'react';
 import { useLoaderData } from 'react-router-dom';
 import BookingModal from './BookingModal';
-import { CheckCircleIcon } from '@heroicons/react/24/solid'
+import { CheckCircleIcon } from '@heroicons/react/24/solid';
+import toast from 'react-hot-toast';
+import { AuthContext } from '../../contexts/AuthProvider';
 
 const Products = () => {
+    const { user } = useContext(AuthContext);
     const products = useLoaderData();
     const [bookingProduct, setBookingProduct] = useState(null);
     const categoryName = products[0]?.category_name;
+
+    
+    const handleReportToAdmin = product => {
+        const procced = window.confirm('Do you want to report this product?')
+        if (procced) {
+            const report = {
+                product,
+                user: user?.displayName,
+                email: user?.email
+            }
+            if (user?.uid) {
+                fetch('http://localhost:5000/reporteditems', {
+                    method: "POST",
+                    headers: {
+                        "content-type": "application/json",
+                        authorization: `bearer ${localStorage.getItem('accessToken')}`
+                    },
+                    body: JSON.stringify(report)
+                })
+                    .then(res => res.json())
+                    .then(data => {
+                        if (data.acknowledged) {
+                            toast.success('Product Reported');
+                        } else {
+                            toast.error(data.message);
+                        }
+                    })
+            } else {
+                toast.error("Please Login to report any product")
+            }
+        }
+    }
 
     return (
         <div className='mt-8 mb-20'>
@@ -29,6 +64,7 @@ const Products = () => {
                                         <p className='text-sm py-0 my-0'>Seller: {product?.seller}</p>
                                     </div>
                                     <p className='text-sm py-0 my-0'>Posted: {product?.time}</p>
+                                    <div><button onClick={() => handleReportToAdmin(product)} className='btn-sm btn'>Report to Admin</button></div>
                                     <div className="block w-full mt-5">
                                         <label htmlFor="booking-modal" onClick={() => setBookingProduct(product)} className="btn btn-info w-full">Book Now</label>
                                     </div>
