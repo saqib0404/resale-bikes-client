@@ -7,7 +7,7 @@ const BookingModal = ({ bookingProduct, setBookingProduct }) => {
     const { bike_name, resale_price, image, _id } = bookingProduct;
     const [userType, setUserType] = useState();
     useEffect(() => {
-        fetch(`http://localhost:5000/users?email=${user?.email}`, {
+        fetch(`https://resell-bikes-server.vercel.app/users?email=${user?.email}`, {
             headers: {
                 authorization: `bearer ${localStorage.getItem('accessToken')}`
             },
@@ -43,7 +43,7 @@ const BookingModal = ({ bookingProduct, setBookingProduct }) => {
         }
 
 
-        fetch('http://localhost:5000/bookings', {
+        fetch('https://resell-bikes-server.vercel.app/bookings', {
             method: "POST",
             headers: {
                 "content-type": "application/json"

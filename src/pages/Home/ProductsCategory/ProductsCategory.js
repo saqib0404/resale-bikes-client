@@ -6,7 +6,7 @@ import Loader from '../../../components/Loader/Loader';
 const ProductsCategory = () => {
     const [categories, setCategories] = useState();
     useEffect(() => {
-        axios.get('http://localhost:5000/category').then(data => setCategories(data.data))
+        axios.get('https://resell-bikes-server.vercel.app/category').then(data => setCategories(data.data))
     }, [])
 
     // console.log(productsCategory);

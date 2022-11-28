@@ -7,7 +7,7 @@ const AllBuyers = () => {
     const { data: buyers = [], refetch } = useQuery({
         queryKey: ['buyers'],
         queryFn: async () => {
-            const res = await fetch(`http://localhost:5000/specificusers?buyer=Buyer`, {
+            const res = await fetch(`https://resell-bikes-server.vercel.app/specificusers?buyer=Buyer`, {
                 headers: {
                     authorization: `bearer ${localStorage.getItem('accessToken')}`
                 }
@@ -20,7 +20,7 @@ const AllBuyers = () => {
     const handleDelete = id => {
         const proceed = window.confirm("Do you want to remove this Buyer?")
         if (proceed) {
-            fetch(`http://localhost:5000/users?buyerId=${id}`, {
+            fetch(`https://resell-bikes-server.vercel.app/users?buyerId=${id}`, {
                 method: "DELETE",
                 headers: {
                     authorization: `bearer ${localStorage.getItem('accessToken')}`

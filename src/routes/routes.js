@@ -41,7 +41,7 @@ export const router = createBrowserRouter([
             },
             {
                 path: '/category/:id',
-                loader: ({ params }) => fetch(`http://localhost:5000/category/${params.id}`),
+                loader: ({ params }) => fetch(`https://resell-bikes-server.vercel.app/category/${params.id}`),
                 element: <PrivateRoute><Products></Products></PrivateRoute>
             },
         ]
@@ -76,7 +76,7 @@ export const router = createBrowserRouter([
             },
             {
                 path: '/dashboard/payment/:id',
-                loader: ({ params }) => fetch(`http://localhost:5000/bookings/${params.id}`),
+                loader: ({ params }) => fetch(`https://resell-bikes-server.vercel.app/bookings/${params.id}`),
                 element: <Payments></Payments>
             },
         ]

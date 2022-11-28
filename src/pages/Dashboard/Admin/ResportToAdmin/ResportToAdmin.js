@@ -8,7 +8,7 @@ const ResportToAdmin = () => {
     const { data: reports = [], refetch } = useQuery({
         queryKey: ['reports'],
         queryFn: async () => {
-            const res = await fetch(`http://localhost:5000/reporteditems`, {
+            const res = await fetch(`https://resell-bikes-server.vercel.app/reporteditems`, {
                 headers: {
                     authorization: `bearer ${localStorage.getItem('accessToken')}`
                 }
@@ -21,7 +21,7 @@ const ResportToAdmin = () => {
     const handleRemoveReport = id => {
         const proceed = window.confirm("Do you want to remove the report?")
         if (proceed) {
-            fetch(`http://localhost:5000/reporteditems/${id}`, {
+            fetch(`https://resell-bikes-server.vercel.app/reporteditems/${id}`, {
                 method: "DELETE",
                 headers: {
                     authorization: `bearer ${localStorage.getItem('accessToken')}`
@@ -40,7 +40,7 @@ const ResportToAdmin = () => {
     const handleDeleteProduct = id => {
         const proceed = window.confirm("Do you want to Delete the product?")
         if (proceed) {
-            fetch(`http://localhost:5000/deletereporteditem?id=${id}`, {
+            fetch(`https://resell-bikes-server.vercel.app/deletereporteditem?id=${id}`, {
                 method: "DELETE",
                 headers: {
                     authorization: `bearer ${localStorage.getItem('accessToken')}`

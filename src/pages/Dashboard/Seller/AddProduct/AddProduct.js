@@ -52,7 +52,7 @@ const AddProduct = () => {
                         description
                     }
 
-                    fetch(`http://localhost:5000/products`, {
+                    fetch(`https://resell-bikes-server.vercel.app/products`, {
                         method: "POST",
                         headers: {
                             'content-type': 'application/json',

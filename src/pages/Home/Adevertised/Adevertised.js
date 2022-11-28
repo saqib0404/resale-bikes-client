@@ -11,7 +11,7 @@ const Adevertised = () => {
     const { data: products = [] } = useQuery({
         queryKey: ['products'],
         queryFn: async () => {
-            const res = await fetch(`http://localhost:5000/advertiserproducts`)
+            const res = await fetch(`https://resell-bikes-server.vercel.app/advertiserproducts`)
             const data = await res.json();
             return data;
         }
@@ -26,7 +26,7 @@ const Adevertised = () => {
                 email: user?.email
             }
             if (user?.uid) {
-                fetch('http://localhost:5000/reporteditems', {
+                fetch('https://resell-bikes-server.vercel.app/reporteditems', {
                     method: "POST",
                     headers: {
                         "content-type": "application/json",

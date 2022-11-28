@@ -21,7 +21,7 @@ const Products = () => {
                 email: user?.email
             }
             if (user?.uid) {
-                fetch('http://localhost:5000/reporteditems', {
+                fetch('https://resell-bikes-server.vercel.app/reporteditems', {
                     method: "POST",
                     headers: {
                         "content-type": "application/json",

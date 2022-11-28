@@ -57,7 +57,7 @@ const SignUp = () => {
     // Saving user to DB
     const saveUser = (name, email, userType) => {
         const user = { name, email, userType }
-        fetch('http://localhost:5000/users', {
+        fetch('https://resell-bikes-server.vercel.app/users', {
             method: 'POST',
             headers: {
                 "content-type": "application/json",
