@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useLoaderData } from 'react-router-dom';
 import BookingModal from './BookingModal';
+import { CheckCircleIcon } from '@heroicons/react/24/solid'
 
 const Products = () => {
     const products = useLoaderData();
@@ -23,7 +24,10 @@ const Products = () => {
                                     <p className='text-sm py-0 my-0'>Location: {product?.location}</p>
                                     <p className='text-sm py-0 my-0'>Original Price: ${product?.original_price}</p>
                                     <p className='text-sm py-0 my-0'>Resale Price: ${product?.resale_price}</p>
-                                    <p className='text-sm py-0 my-0'>Seller: {product?.seller}</p>
+                                    <div className='flex items-center'>
+                                        {product.verified && <CheckCircleIcon className="h-6 w-6 text-blue-500" />}
+                                        <p className='text-sm py-0 my-0'>Seller: {product?.seller}</p>
+                                    </div>
                                     <p className='text-sm py-0 my-0'>Posted: {product?.time}</p>
                                     <div className="block w-full mt-5">
                                         <label htmlFor="booking-modal" onClick={() => setBookingProduct(product)} className="btn btn-info w-full">Book Now</label>

@@ -1,5 +1,6 @@
 import { useQuery } from '@tanstack/react-query';
 import React from 'react';
+import toast from 'react-hot-toast';
 import Loader from '../../../../components/Loader/Loader';
 
 const AllSellers = () => {
@@ -15,6 +16,42 @@ const AllSellers = () => {
             return data;
         }
     })
+
+    const handleDelete = id => {
+        const proceed = window.confirm("Do you want to remove this Seller?")
+        if (proceed) {
+            fetch(`http://localhost:5000/users?sellerId=${id}`, {
+                method: "DELETE",
+                headers: {
+                    authorization: `bearer ${localStorage.getItem('accessToken')}`
+                }
+            })
+                .then(res => res.json())
+                .then(data => {
+                    if (data.deletedCount > 0) {
+                        toast.success('Seller removed')
+                        refetch();
+                    }
+                })
+        }
+    }
+
+    const handleVerify = email => {
+        const proceed = window.confirm("Do you want to Verify this Seller?")
+        if (proceed) {
+            fetch(`http://localhost:5000/verifyuser?email=${email}`, {
+                method: "PATCH",
+                headers: {
+                    authorization: `bearer ${localStorage.getItem('accessToken')}`
+                }
+            })
+                .then(res => res.json())
+                .then(data => {
+                    toast.success('Seller Verified')
+                    refetch();
+                })
+        }
+    }
 
     return (
         <div>
@@ -42,10 +79,13 @@ const AllSellers = () => {
                                         <td>{seller.name}</td>
                                         <td>{seller.email}</td>
                                         <td>
-                                            <button className='btn btn-sm btn-error'>Delete</button>
+                                            <button onClick={() => handleDelete(seller._id)} className='btn btn-sm btn-error'>Delete</button>
                                         </td>
                                         <td>
-                                            <button className='btn btn-sm btn-info'>Verify</button>
+                                            {seller.verified ? <span className='font-bold'>Verified</span>
+                                                :
+                                                <button onClick={() => handleVerify(seller.email)} className='btn btn-sm btn-info'>Verify</button>
+                                            }
                                         </td>
                                     </tr>
                                     )
