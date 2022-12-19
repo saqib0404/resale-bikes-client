@@ -15,11 +15,16 @@ const BookingModal = ({ bookingProduct, setBookingProduct }) => {
             .then(res => res.json())
             .then(data => setUserType(data))
     }, [user])
-    
+
     const handleBooking = e => {
         e.preventDefault();
+        if (!user?.uid) {
+            toast.error("Please login to book products.")
+            return;
+        }
         if (userType?.userType === "Seller" || userType?.userType === "Admin") {
-            return toast.error("Only Buyers can book products")
+            toast.error("Only Buyers can book products")
+            return;
         }
         const form = e.target;
         const name = form.name.value;
